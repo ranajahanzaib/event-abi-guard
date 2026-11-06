@@ -1,0 +1,16 @@
+version: 1
+contracts:
+  - id: indexed-change
+    old: old.json
+    new: new.json
+consumers:
+  - id: decoder
+    contract: indexed-change
+    events:
+      - signature: TransferRecorded(address,address,uint256)
+        mode: decoded
+  - id: topic-monitor
+    contract: indexed-change
+    events:
+      - signature: TransferRecorded(address,address,uint256)
+        mode: topic_only

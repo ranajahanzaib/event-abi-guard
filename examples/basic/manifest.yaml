@@ -1,0 +1,15 @@
+version: 1
+contracts:
+  - id: basic
+    old: old.json
+    new: new.json
+consumers:
+  - id: billing-indexer
+    contract: basic
+    events:
+      - signature: PaymentReceived(address,uint256)
+        mode: decoded
+        fields:
+          - name: payer
+            type: address
+            indexed: true

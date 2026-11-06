@@ -1,0 +1,24 @@
+[
+  {
+    "type": "event",
+    "name": "OrderCreated",
+    "inputs": [
+      {
+        "name": "orderId",
+        "type": "uint256",
+        "indexed": true
+      },
+      {
+        "name": "customer",
+        "type": "address",
+        "indexed": true
+      },
+      {
+        "name": "grossTotal",
+        "type": "uint256",
+        "indexed": false
+      }
+    ],
+    "anonymous": false
+  }
+]

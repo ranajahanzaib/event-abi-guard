@@ -1,0 +1,11 @@
+version: 1
+contracts:
+  - id: compatible
+    old: old.json
+    new: new.json
+consumers:
+  - id: billing
+    contract: compatible
+    events:
+      - signature: PaymentReceived(address,uint256)
+        mode: decoded

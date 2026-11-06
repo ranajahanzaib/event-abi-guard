@@ -1,0 +1,24 @@
+[
+  {
+    "type": "event",
+    "name": "TransferRecorded",
+    "inputs": [
+      {
+        "name": "from",
+        "type": "address",
+        "indexed": false
+      },
+      {
+        "name": "to",
+        "type": "address",
+        "indexed": true
+      },
+      {
+        "name": "amount",
+        "type": "uint256",
+        "indexed": true
+      }
+    ],
+    "anonymous": false
+  }
+]

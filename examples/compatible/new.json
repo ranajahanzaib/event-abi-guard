@@ -1,0 +1,31 @@
+[
+  {
+    "type": "event",
+    "name": "PaymentReceived",
+    "inputs": [
+      {
+        "name": "payer",
+        "type": "address",
+        "indexed": true
+      },
+      {
+        "name": "amount",
+        "type": "uint256",
+        "indexed": false
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "Paused",
+    "inputs": [
+      {
+        "name": "account",
+        "type": "address",
+        "indexed": false
+      }
+    ],
+    "anonymous": false
+  }
+]

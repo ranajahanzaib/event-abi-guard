@@ -1,0 +1,32 @@
+{
+  "abi": [
+    {
+      "type": "event",
+      "name": "PaymentReceived",
+      "inputs": [
+        {
+          "name": "payer",
+          "type": "address",
+          "indexed": true
+        },
+        {
+          "name": "amount",
+          "type": "uint256",
+          "indexed": false
+        },
+        {
+          "name": "referenceId",
+          "type": "bytes32",
+          "indexed": false
+        }
+      ],
+      "anonymous": false
+    }
+  ],
+  "bytecode": {
+    "object": "0x"
+  },
+  "metadata": {
+    "description": "ABI-only illustrative artifact snapshot; not a compiled bytecode fixture"
+  }
+}

@@ -1,0 +1,35 @@
+version: 1
+contracts:
+  - id: multi-consumer
+    old: old.json
+    new: new.json
+consumers:
+  - id: order-indexer
+    contract: multi-consumer
+    events:
+      - signature: OrderCreated(uint256,address,uint256)
+        mode: decoded
+        fields:
+          - name: orderId
+          - name: customer
+          - name: total
+  - id: analytics
+    contract: multi-consumer
+    events:
+      - signature: OrderCreated(uint256,address,uint256)
+        mode: decoded
+        fields:
+          - name: total
+  - id: monitor
+    contract: multi-consumer
+    events:
+      - signature: OrderCreated(uint256,address,uint256)
+        mode: topic_only
+  - id: positional-decoder
+    contract: multi-consumer
+    events:
+      - signature: OrderCreated(uint256,address,uint256)
+        mode: decoded
+        fields:
+          - position: 2
+            type: uint256

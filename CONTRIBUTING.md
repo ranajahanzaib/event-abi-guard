@@ -44,3 +44,27 @@ We welcome contributions of all kinds to improve this project! Here's how you ca
 ### Issues
 
 Feel free to report bugs or suggest enhancements by creating an issue. Be sure to include detailed information about the problem and, if possible, steps to reproduce it.
+
+### Rust development
+
+Use current stable Rust. The package exposes a reusable library and the `eventabi`
+CLI. Before submitting changes, run:
+
+```bash
+cargo fmt --all -- --check
+cargo clippy --all-targets --all-features -- -D warnings
+cargo test --all-features
+cargo build --release
+```
+
+Add regression tests for normalization, overload matching, manifest validation,
+and consumer compatibility changes. Keep reports deterministic and preserve rule
+IDs. Tests and analysis must remain offline and require no Ethereum infrastructure.
+
+If local documentation tests report incompatible compiler versions, check that
+`rustc` and `rustdoc` come from the same toolchain. You can select the active
+Rust toolchain's binaries for the test command without changing your global setup:
+
+```bash
+PATH="$(rustc --print sysroot)/bin:$PATH" cargo test --all-features
+```

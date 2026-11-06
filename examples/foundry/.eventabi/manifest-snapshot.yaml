@@ -1,0 +1,11 @@
+version: 1
+contracts:
+  - id: Payments
+    old: baseline/Payments.json
+    new: ../proposed-artifact.json
+consumers:
+  - id: billing
+    contract: Payments
+    events:
+      - signature: PaymentReceived(address,uint256)
+        mode: decoded

@@ -1,0 +1,11 @@
+version: 1
+contracts:
+  - id: Payments
+    old: baseline/Payments.json
+    new: ../out/Payments.sol/Payments.json
+consumers:
+  - id: billing
+    contract: Payments
+    events:
+      - signature: PaymentReceived(address,uint256)
+        mode: decoded
