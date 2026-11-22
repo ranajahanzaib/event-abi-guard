@@ -207,3 +207,42 @@ fn manifest_relative_paths_independent_of_working_directory() {
         .unwrap();
     assert!(o.status.success());
 }
+#[test]
+fn validate_rejects_invalid_manifest() {
+    let o = run(&["validate", "--manifest", "nonexistent.yaml"]);
+    assert_eq!(o.status.code(), Some(2));
+}
+#[test]
+fn diff_github_annotations_emits_to_stderr() {
+    let o = run(&[
+        "diff",
+        "--old",
+        "examples/basic/old.json",
+        "--new",
+        "examples/basic/new.json",
+        "--github-annotations",
+    ]);
+    assert!(o.status.success());
+    let stderr = String::from_utf8(o.stderr).unwrap();
+    assert!(
+        stderr.contains("::notice title=EAG100::") || stderr.contains("::warning title=EAG100::")
+    );
+}
+#[test]
+fn diff_markdown_format() {
+    let o = run(&[
+        "diff",
+        "--old",
+        "examples/basic/old.json",
+        "--new",
+        "examples/basic/new.json",
+        "--format",
+        "markdown",
+    ]);
+    assert!(o.status.success());
+    assert!(
+        String::from_utf8(o.stdout)
+            .unwrap()
+            .starts_with("# EventABI Guard")
+    );
+}
